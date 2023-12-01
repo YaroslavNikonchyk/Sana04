@@ -42,14 +42,14 @@ namespace Sana04
             {
                 bool zeroes = false;
                 for (int j = 0; j < matrix.GetLength(1); j++)
-                
+
                     if (matrix[i, j] == 0)
                     {
                         zeroes = true;
                         break;
                     }
                 if (zeroes) count++;
-                
+
             }
             return matrix.GetLength(0) - count;
         }
@@ -69,6 +69,37 @@ namespace Sana04
                 if (zeroes) count++;
             }
             return count;
+        }
+        public static int TheRowNumberOfLongestSeriesOfSameElements(int[,] matrix)
+        {
+            int max = 0;
+            int maxRow = 0;
+            int[] array = new int[matrix.GetLength(0)];
+            for (int i = 0; i < matrix.GetLength(0); i++)
+            {
+                int count = 0;
+                for (int j = 0; j < matrix.GetLength(1) - 1; j++)
+                {
+                    if (matrix[i, j] == matrix[i, j + 1]) count++;
+                    array[i] = count;
+                }
+            }
+            max = array[0];
+            for (int i = 0; i < array.Length; i++)
+            {
+                if (max < array[i])
+                {
+
+                    max = array[i];
+                    maxRow = i;
+                }
+            }
+            return maxRow;
+        }
+        public static int ProductOfElementsWithoutNegativeElements(int[,] matrix)
+        {
+            int product = 1;
+
         }
     }
 }
