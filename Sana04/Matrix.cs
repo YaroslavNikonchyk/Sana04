@@ -24,15 +24,29 @@ namespace Sana04
                 for (int j = 0; j < matrix.GetLength(1); j++)
                     if (matrix[i, j] > 0) count++;
             return count;
+
         }
         public static int MaxNumbreWhichOccuresMoreThenTwoTimes(int[,] matrix)
         {
-            int count = 0;
             int max = 0;
             for (int i = 0; i < matrix.GetLength(0); i++)
+            {
                 for (int j = 0; j < matrix.GetLength(1); j++)
-                    if (true) ;
-
+                {
+                    int count = 0;
+                    for (int a = 0; a < matrix.GetLength(0); a++)
+                    {
+                        for (int b = 0; b < matrix.GetLength(1); b++)
+                        {
+                            if (matrix[i, j] == matrix[a, b]) count++;
+                        }
+                    }
+                    if (count > 2)
+                    {
+                        if (max < matrix[i, j]) max = matrix[i, j];
+                    }
+                }
+            }
             return max;
         }
         public static int RowsWithoutZero(int[,] matrix)
@@ -42,14 +56,12 @@ namespace Sana04
             {
                 bool zeroes = false;
                 for (int j = 0; j < matrix.GetLength(1); j++)
-
                     if (matrix[i, j] == 0)
                     {
                         zeroes = true;
                         break;
                     }
                 if (zeroes) count++;
-
             }
             return matrix.GetLength(0) - count;
         }
@@ -60,7 +72,6 @@ namespace Sana04
             {
                 bool zeroes = false;
                 for (int i = 0; i < matrix.GetLength(0); i++)
-
                     if (matrix[i, j] == 0)
                     {
                         zeroes = true;
@@ -89,7 +100,6 @@ namespace Sana04
             {
                 if (max < array[i])
                 {
-
                     max = array[i];
                     maxRow = i;
                 }
@@ -143,6 +153,75 @@ namespace Sana04
                 if (max < array2[i]) max = array2[i];
             }
             return max;
+        }
+        public static int[] SumOfElementsInNonNegativeColumns(int[,] matrix)
+        {
+            int[] array = new int[matrix.GetLength(0)];
+            for (int i = 0; i < matrix.GetLength(0); i++)
+            {
+                array[i] = 0;
+                bool negativeNum = false;
+                for (int j = 0; j < matrix.GetLength(1); j++)
+                {
+                    if (matrix[i, j] < 0)
+                    {
+                        negativeNum = true;
+                        break;
+                    }
+                    else
+                    {
+                        array[i] += matrix[i, j];
+                    }
+                }
+                if (negativeNum)
+                {
+                    array[i] = 1;
+                }
+            }
+            int a = 0;
+            for (int i = 0; i < array.Length; i++)
+                if (array[i] != 1) array[a++] = array[i];
+            Array.Resize(ref array, a);
+            return array;
+        }
+        public static int MinSumOfAbsoluteValuesOfDiagonalElementsParallelToSecondaryDiagonal(int[,] matrix)
+        {
+            int min = 0;
+            return min;
+        }
+        public static int[] SummaOfElementsInRowsWithNegativeElements(int[,] matrix)
+        {
+            int[] array = new int[matrix.GetLength(0)];
+            for (int i = 0; i < matrix.GetLength(0); i++)
+            {
+                array[i] = 0;
+                bool negativeNum = false;
+                for (int j = 0; j < matrix.GetLength(1); j++)
+                {
+                    if (matrix[i, j] < 0)
+                    {
+                        negativeNum = true;
+                    }
+                    array[i] += matrix[i, j];
+                }
+                if (!negativeNum)
+                {
+                    array[i] = 0;
+                }
+            }
+            int a = 0;
+            for (int i = 0; i < array.Length; i++)
+                if (array[i] != 0) array[a++] = array[i];
+            Array.Resize(ref array, a);
+            return array;
+        }
+        public static int[,] TransposedMatrix(int[,] matrix)
+        {
+            int[,] matrix1 = new int[matrix.GetLength(0), matrix.GetLength(1)];
+            for (int i = 0; i < matrix.GetLength(0); i++)
+                for (int j = 0; j < matrix.GetLength(1); j++)
+                    matrix1[i, j] = matrix[j, i];
+            return matrix1;
         }
     }
 }
