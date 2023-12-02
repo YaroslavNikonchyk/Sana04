@@ -29,8 +29,8 @@ namespace Sana04
         {
             int count = 0;
             int max = 0;
-            for (int i = 1; i < matrix.GetLength(0); i++)
-                for (int j = 1; j < matrix.GetLength(1); j++)
+            for (int i = 0; i < matrix.GetLength(0); i++)
+                for (int j = 0; j < matrix.GetLength(1); j++)
                     if (true) ;
 
             return max;
@@ -96,10 +96,53 @@ namespace Sana04
             }
             return maxRow;
         }
-        public static int ProductOfElementsWithoutNegativeElements(int[,] matrix)
+        public static int[] ProductOfElementsWithoutNegativeElements(int[,] matrix)
         {
-            int product = 1;
-
+            int[] array = new int[matrix.GetLength(0)];
+            for (int i = 0; i < matrix.GetLength(0); i++)
+            {
+                array[i] = 1;
+                bool negativeNum = false;
+                for (int j = 0; j < matrix.GetLength(1); j++)
+                {
+                    if (matrix[i, j] < 0)
+                    {
+                        negativeNum = true;
+                        break;
+                    }
+                    else
+                    {
+                        array[i] *= matrix[i, j];
+                    }
+                }
+                if (negativeNum)
+                {
+                    array[i] = 1;
+                }
+            }
+            int a = 0;
+            for (int i = 0; i < array.Length; i++)
+                if (array[i] != 1) array[a++] = array[i];
+            Array.Resize(ref array, a);
+            return array;
+        }
+        public static int MaxSumOfParallelDiagonalElements(int[,] matrix)
+        {
+            int max = 0;
+            int[] array = new int[matrix.GetLength(0)];
+            int[] array2 = new int[matrix.GetLength(0)];
+            for (int i = 0; i < matrix.GetLength(0); i++)
+                for (int j = 0; j < matrix.GetLength(1); j++)
+                {
+                    if (i - j == matrix.GetLength(0) - 1) array[i] += matrix[i, j];
+                    if (i + j == matrix.GetLength(0) - 1) array2[i] += matrix[i, j];
+                }
+            for (int i = 0; i < array.Length; i++)
+            {
+                if (max < array[i]) max = array[i];
+                if (max < array2[i]) max = array2[i];
+            }
+            return max;
         }
     }
 }
