@@ -138,14 +138,27 @@ namespace Sana04
         }
         public static int MaxSumOfParallelDiagonalElements(int[,] matrix)
         {
-            int max = 0;
-            for (int i = 0; i < matrix.GetLength(0); i++)
+            int max = int.MinValue;
+            for (int i = 1; i < matrix.GetLength(0); i++)
             {
                 int sum = 0;
-                for (int j = 0; i + j < matrix.GetLength(0); j++)
+                for (int j = 0; j < matrix.GetLength(1) && i + j < matrix.GetLength(0); j++)
                 {
-                    if (i != j)
-                        sum += matrix[i + j, j];
+                   
+                    sum += matrix[i + j, j];
+                }
+                if (sum > max)
+                {
+                    max = sum;
+                }
+            }
+            for (int i = 1; i < matrix.GetLength(1); i++)
+            {
+                int sum = 0;
+                for (int j = 0; j < matrix.GetLength(0) && i + j < matrix.GetLength(1); j++)
+                {
+                    
+                    sum += matrix[j, i + j];
                 }
                 if (sum > max)
                 {

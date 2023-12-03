@@ -1,6 +1,6 @@
 ﻿using Sana04;
 
-int[,] matrix = Matrix.GenerateMatrix(5, 5, -1, 10);
+int[,] matrix = Matrix.GenerateMatrix(4, 4, -1, 10);
 Console.WriteLine("Згенерована матриця:");
 for (int i = 0; i < matrix.GetLength(0); i++)
 {
