@@ -17,6 +17,7 @@ int RowsWithoutZeroes = Matrix.RowsWithoutZero(matrix);
 int IntegersCount = Matrix.IntegersCount(matrix);
 int TheRowNumberOfLongestSeriesOfSameElements = Matrix.TheRowNumberOfLongestSeriesOfSameElements(matrix);
 int MaxSumOfParallelDiagonalElements = Matrix.MaxSumOfParallelDiagonalElements(matrix);
+int MinSumOfAbsoluteValuesOfDiagonalElementsParallelToSecondaryDiagonal = Matrix.MinSumOfAbsoluteValuesOfDiagonalElementsParallelToSecondaryDiagonal(matrix);
 
 Console.WriteLine($"Кількість чисел більших за нуль у матриці:{IntegersCount}");
 Console.WriteLine($"Mаксимальне із чисел, що зустрічається в заданій матриці більше одного разу: {MaxNumbreWhichOccuresMoreThenTwoTimes}");
@@ -32,6 +33,7 @@ Console.WriteLine($"Сума елементів в тих рядках, які �
 int[] result1 = Matrix.SumOfElementsInNonNegativeColumns(matrix);
 for (int i = 0; i < result1.Length; i++)
     Console.WriteLine($"-->{result1[i]}");
+Console.WriteLine($"Мінімум серед сум модулів елементів діагоналей, паралельних побічній діагоналі матриці: {MinSumOfAbsoluteValuesOfDiagonalElementsParallelToSecondaryDiagonal}");
 Console.WriteLine($"Сума елементів в тих рядках, які містять хоч 1 від’ємний елемент:");
 int[] result2 = Matrix.SummaOfElementsInRowsWithNegativeElements(matrix);
 for (int i = 0; i < result2.Length; i++)
@@ -44,4 +46,3 @@ for (int i = 0; i < matrix.GetLength(0); i++)
         Console.Write($"{TransposedMatrix[i, j]}\t");
     Console.WriteLine();
 }
-Console.WriteLine($"Mаксимум серед сум елементів діагоналей, паралельних головній діагоналі матриці: {MaxSumOfParallelDiagonalElements}");

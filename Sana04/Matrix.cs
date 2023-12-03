@@ -144,7 +144,6 @@ namespace Sana04
                 int sum = 0;
                 for (int j = 0; j < matrix.GetLength(1) && i + j < matrix.GetLength(0); j++)
                 {
-                   
                     sum += matrix[i + j, j];
                 }
                 if (sum > max)
@@ -157,7 +156,6 @@ namespace Sana04
                 int sum = 0;
                 for (int j = 0; j < matrix.GetLength(0) && i + j < matrix.GetLength(1); j++)
                 {
-                    
                     sum += matrix[j, i + j];
                 }
                 if (sum > max)
@@ -199,7 +197,33 @@ namespace Sana04
         }
         public static int MinSumOfAbsoluteValuesOfDiagonalElementsParallelToSecondaryDiagonal(int[,] matrix)
         {
+            int minAbs = int.MaxValue;
             int min = 0;
+            for (int i = 1; i < matrix.GetLength(0); i++)
+            {
+                int sum = 0;
+                for (int j = 0; j < matrix.GetLength(1) && i + j < matrix.GetLength(0); j++)
+                {
+                    sum += matrix[j, matrix.GetLength(1) - i - 1];
+                }
+                if (Math.Abs(sum) < minAbs)
+                {
+                    minAbs = Math.Abs(sum);
+                    min = sum;
+                }
+            }
+            for (int i = 1; i < matrix.GetLength(1); i++)
+            {
+                int sum = 0;
+                for (int j = 0; j < matrix.GetLength(0) && i + j < matrix.GetLength(1); j++)
+                {
+                    sum += matrix[j, matrix.GetLength(1) - i - 1];
+                }
+                if (Math.Abs(sum) < minAbs) {
+                    minAbs = Math.Abs(sum);
+                    min = sum;
+                }
+            }
             return min;
         }
         public static int[] SummaOfElementsInRowsWithNegativeElements(int[,] matrix)
