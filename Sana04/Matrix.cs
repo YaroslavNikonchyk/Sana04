@@ -224,7 +224,6 @@ namespace Sana04
             }
             return minAbs;
         }
-
         public static int[] SummaOfElementsInRowsWithNegativeElements(int[,] matrix)
         {
             int[] array = new int[matrix.GetLength(0)];
@@ -251,13 +250,13 @@ namespace Sana04
             Array.Resize(ref array, a);
             return array;
         }
-        public static int[,] TransposedMatrix(int[,] matrix)
+        public static int[,] TransponedMatrix(int[,] matrix)
         {
-            int[,] matrix1 = new int[matrix.GetLength(0), matrix.GetLength(1)];
+            int[,] transMatrix = new int[matrix.GetLength(1), matrix.GetLength(0)];
             for (int i = 0; i < matrix.GetLength(0); i++)
                 for (int j = 0; j < matrix.GetLength(1); j++)
-                    matrix1[i, j] = matrix[j, i];
-            return matrix1;
+                    transMatrix[j, i] = matrix[i, j];
+            return transMatrix;
         }
     }
 }

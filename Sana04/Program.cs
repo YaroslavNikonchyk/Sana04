@@ -44,7 +44,7 @@ do
                 for (int i = 0; i < result.Length; i++)
                     Console.WriteLine($"-->{result[i]}");
                 Console.WriteLine($"Mаксимум серед сум елементів діагоналей, паралельних головній діагоналі матриці: {MaxSumOfParallelDiagonalElements}");
-                Console.WriteLine($"Сума елементів в тих рядках, які не містять від’ємних елементів:");
+                Console.WriteLine($"Сума елементів в тих стовпцях, які не містять від’ємних елементів:");
                 int[] result1 = Matrix.SumOfElementsInNonNegativeColumns(matrix);
                 for (int i = 0; i < result1.Length; i++)
                     Console.WriteLine($"-->{result1[i]}");
@@ -54,11 +54,11 @@ do
                 for (int i = 0; i < result2.Length; i++)
                     Console.WriteLine($"-->{result2[i]}");
                 Console.WriteLine($"Транспонована матриця:");
-                int[,] TransposedMatrix = Matrix.TransposedMatrix(matrix);
-                for (int i = 0; i < matrix.GetLength(0); i++)
+                int[,] TransponedMatrix = Matrix.TransponedMatrix(matrix);
+                for (int i = 0; i < TransponedMatrix.GetLength(0); i++)
                 {
-                    for (int j = 0; j < matrix.GetLength(1); j++)
-                        Console.Write($"{TransposedMatrix[i, j]}\t");
+                    for (int j = 0; j < TransponedMatrix.GetLength(1); j++)
+                        Console.Write($"{TransponedMatrix[i, j]}\t");
                     Console.WriteLine();
                 }
             }
