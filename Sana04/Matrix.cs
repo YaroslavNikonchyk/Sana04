@@ -167,21 +167,21 @@ namespace Sana04
         }
         public static int[] SumOfElementsInNonNegativeColumns(int[,] matrix)
         {
-            int[] array = new int[matrix.GetLength(0)];
-            for (int i = 0; i < matrix.GetLength(0); i++)
+            int[] array = new int[matrix.GetLength(1)];
+            for (int i = 0; i < matrix.GetLength(1); i++)
             {
                 array[i] = 0;
                 bool negativeNum = false;
-                for (int j = 0; j < matrix.GetLength(1); j++)
+                for (int j = 0; j < matrix.GetLength(0); j++)
                 {
-                    if (matrix[i, j] < 0)
+                    if (matrix[j, i] < 0)
                     {
                         negativeNum = true;
                         break;
                     }
                     else
                     {
-                        array[i] += matrix[i, j];
+                        array[i] += matrix[j, i];
                     }
                 }
                 if (negativeNum)
