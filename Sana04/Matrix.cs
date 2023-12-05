@@ -45,6 +45,7 @@ namespace Sana04
                     {
                         if (max < matrix[i, j]) max = matrix[i, j];
                     }
+                    if (max == 1) max = 0;
                 }
             }
             return max;
@@ -88,12 +89,24 @@ namespace Sana04
             int[] array = new int[matrix.GetLength(0)];
             for (int i = 0; i < matrix.GetLength(0); i++)
             {
-                int count = 0;
+                int count = 1;
+                int maxCount = 1;
                 for (int j = 0; j < matrix.GetLength(1) - 1; j++)
                 {
-                    if (matrix[i, j] == matrix[i, j + 1]) count++;
-                    array[i] = count;
+                    if (matrix[i, j] == matrix[i, j + 1])
+                    {
+                        count++;
+                        if (count > maxCount)
+                        {
+                            maxCount = count;
+                        }
+                    }
+                    else
+                    {
+                        count = 1;
+                    }
                 }
+                array[i] = maxCount;
             }
             max = array[0];
             for (int i = 0; i < array.Length; i++)
@@ -104,7 +117,19 @@ namespace Sana04
                     maxRow = i;
                 }
             }
-            return maxRow;
+            int maxCountOccurrences = 0;
+            for (int i = 0; i < array.Length; i++)
+            {
+                if (array[i] == max)
+                {
+                    maxCountOccurrences++;
+                }
+            }
+            if (maxCountOccurrences > 1)
+            {
+                return -1;
+            }
+            return maxRow + 1;
         }
         public static int[] ProductOfElementsWithoutNegativeElements(int[,] matrix)
         {

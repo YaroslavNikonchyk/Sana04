@@ -38,13 +38,21 @@ do
                 Console.WriteLine("============================================================================================================");
                 Console.WriteLine($"Кількість чисел більших за нуль у матриці:{integersCount}");
                 Console.WriteLine("============================================================================================================");
-                Console.WriteLine($"Mаксимальне із чисел, що зустрічається в заданій матриці більше одного разу: {maxNumbreWhichOccuresMoreThenTwoTimes}");
+                if (maxNumbreWhichOccuresMoreThenTwoTimes > 0)
+                {
+                    Console.WriteLine($"Mаксимальне із чисел, що зустрічається в заданій матриці більше одного разу: {maxNumbreWhichOccuresMoreThenTwoTimes}");
+                }
+                else Console.WriteLine("Всі числа матриці унікальні");
                 Console.WriteLine("============================================================================================================");
                 Console.WriteLine($"Кількість рядків в яких немає нулів: {rowsWithoutZeroes}");
                 Console.WriteLine("============================================================================================================");
                 Console.WriteLine($"Кількість стовпців в яких є хоч 1 нуль: {colsWithZeroes}");
                 Console.WriteLine("============================================================================================================");
-                Console.WriteLine($"Номер рядка, в якому знаходиться найдовша серія однакових елементів: {theRowNumberOfLongestSeriesOfSameElements}");
+                if (theRowNumberOfLongestSeriesOfSameElements != -1)
+                {
+                    Console.WriteLine($"Номер рядка(індекс + 1), в якому знаходиться найдовша серія однакових елементів: {theRowNumberOfLongestSeriesOfSameElements}");
+                }
+                else Console.WriteLine("В деяких рядках однакові найдовші серії елементів");
                 Console.WriteLine("============================================================================================================");
                 Console.WriteLine($"Добуток елементів в тих рядках, які не містять від’ємних елементів:");
                 int[] result = Matrix.ProductOfElementsWithoutNegativeElements(matrix);
